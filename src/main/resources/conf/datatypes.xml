@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<datatypes>
+    <datatype>BIGINT</datatype>
+    <datatype>DECIMAL</datatype>
+    <datatype>DOUBLE</datatype>
+    <datatype>FLOAT</datatype>
+    <datatype>INT</datatype>
+
+    <datatype>VARCHAR</datatype>
+    <datatype>CHAR</datatype>
+
+    <datatype>DATE</datatype>
+    <datatype>DATETIME</datatype>
+    <datatype>TIME</datatype>
+
+    <datatype>BLOB</datatype>
+    <datatype>BINARY</datatype>
+</datatypes>
