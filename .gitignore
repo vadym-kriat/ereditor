@@ -1,0 +1,6 @@
+# IDE config
+.idea/
+ereditor.iml
+# bin files
+target/
+out/
