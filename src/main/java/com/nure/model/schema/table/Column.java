@@ -19,7 +19,19 @@ public class Column {
     private boolean isUnsigned;
     private boolean isZeroFill;
 
-    public Column() {
+    public Column(String name) throws ValidationException {
+        setName(name);
+    }
+
+    public Column(ForeignKey key) {
+        this.name = key.getName();
+        this.datatype = key.getDatatype();
+        this.defValue = key.getDefValue();
+        this.isPK = key.isPK();
+        this.isNotNull = key.isNotNull();
+        this.isUnique = key.isUnique();
+        this.isUnsigned = key.isUnsigned();
+        this.isZeroFill = key.isZeroFill();
     }
 
     public String getName() {
@@ -115,5 +127,19 @@ public class Column {
     @Override
     public int hashCode() {
         return name.hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "Column{" +
+                "name='" + name + '\'' +
+                ", datatype='" + datatype + '\'' +
+                ", defValue=" + defValue +
+                ", isPK=" + isPK +
+                ", isNotNull=" + isNotNull +
+                ", isUnique=" + isUnique +
+                ", isUnsigned=" + isUnsigned +
+                ", isZeroFill=" + isZeroFill +
+                '}';
     }
 }

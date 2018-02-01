@@ -14,7 +14,9 @@ public class ForeignKey extends Column {
     private ForeignKeyOption onUpdate;
     private ForeignKeyOption onDelete;
 
-    public ForeignKey() {
+    public ForeignKey(String name, String fkName) throws ValidationException {
+        super(name);
+        setFkName(fkName);
     }
 
     public String getFkName() {
@@ -29,7 +31,7 @@ public class ForeignKey extends Column {
         }
     }
 
-    public String getReferencedTable() {
+    public String getReferencedTableName() {
         return referencedTable;
     }
 
@@ -59,5 +61,24 @@ public class ForeignKey extends Column {
 
     public void setOnDelete(ForeignKeyOption onDelete) {
         this.onDelete = onDelete;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+
+        ForeignKey that = (ForeignKey) o;
+
+        return fkName.equals(that.fkName) && super.equals(o);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + fkName.hashCode();
+        result += super.hashCode();
+        return result;
     }
 }

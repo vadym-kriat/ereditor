@@ -8,7 +8,6 @@ import java.util.regex.Pattern;
 /**
  * Created by Vadim_ on 31.01.2018.
  */
-//todo write regex in properties file
 public class NameValidator {
 
     private static Properties properties;
@@ -16,7 +15,8 @@ public class NameValidator {
     static {
         properties = new Properties();
         try {
-            properties.load(NameValidator.class.getClassLoader().getResourceAsStream("conf/text.properties"));
+            properties.load(NameValidator.class.
+                    getClassLoader().getResourceAsStream("conf/text.properties"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
