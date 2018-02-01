@@ -8,7 +8,6 @@ import javax.xml.bind.ValidationException;
 /**
  * Created by Vadim_ on 31.01.2018.
  */
-//todo make type of data
 public class Column {
     private String name;
     private String datatype;

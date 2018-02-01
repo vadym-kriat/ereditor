@@ -1,7 +1,7 @@
 package com.nure.model.schema.table;
 
-import com.nure.model.schema.table.exceptions.ColumnIsExistException;
-import com.nure.model.schema.table.exceptions.SchemePropertyException;
+import com.nure.model.schema.exceptions.ColumnIsExistException;
+import com.nure.model.schema.exceptions.SchemeException;
 import com.nure.model.schema.util.NameValidator;
 
 import javax.xml.bind.ValidationException;
@@ -35,7 +35,7 @@ public class Table {
         }
     }
 
-    public void addColumn(Column column) throws SchemePropertyException {
+    public void addColumn(Column column) throws SchemeException {
         if (!columns.add(column)) {
             throw new ColumnIsExistException("Name of columns are duplicated.");
         }

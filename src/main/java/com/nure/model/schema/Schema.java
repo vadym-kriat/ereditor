@@ -1,7 +1,7 @@
 package com.nure.model.schema;
 
+import com.nure.model.schema.exceptions.TableIsExistException;
 import com.nure.model.schema.table.Table;
-import com.nure.model.schema.table.exceptions.TableIsExistException;
 import com.nure.model.schema.util.NameValidator;
 
 import javax.xml.bind.ValidationException;
@@ -33,6 +33,11 @@ public class Schema {
 
     public Schema() {
         this.tables = new LinkedHashSet<>();
+    }
+
+    public Schema(String name) throws ValidationException {
+        this();
+        setName(name);
     }
 
     public Table newTable() {
