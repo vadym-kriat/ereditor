@@ -39,6 +39,10 @@ public class DatatypeLoader {
 
     }
 
+    public static boolean datatypeIsExist(String datatype) {
+        return datatypes.contains(datatype);
+    }
+
     public static List<String> listOfDatatypes() {
         return datatypes;
     }

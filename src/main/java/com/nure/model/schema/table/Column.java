@@ -1,5 +1,10 @@
 package com.nure.model.schema.table;
 
+import com.nure.model.schema.util.DatatypeLoader;
+import com.nure.model.schema.util.NameValidator;
+
+import javax.xml.bind.ValidationException;
+
 /**
  * Created by Vadim_ on 31.01.2018.
  */
@@ -17,26 +22,30 @@ public class Column {
     public Column() {
     }
 
-    public Column(String name) {
-        this.name = name;
-    }
-
     public String getName() {
         return name;
     }
 
-    public Column setName(String name) {
-        this.name = name;
-        return this;
+    public Column setName(String name) throws ValidationException {
+        if (NameValidator.columnNameIsValid(name)) {
+            this.name = name;
+            return this;
+        } else {
+            throw new ValidationException("Enter the name incorrectly.");
+        }
     }
 
     public String getDatatype() {
         return datatype;
     }
 
-    public Column setDatatype(String datatype) {
-        this.datatype = datatype;
-        return this;
+    public Column setDatatype(String datatype) throws ValidationException {
+        if (DatatypeLoader.datatypeIsExist(datatype)) {
+            this.datatype = datatype;
+            return this;
+        } else {
+            throw new ValidationException("This type of data does not exist.");
+        }
     }
 
     public Object getDefValue() {
