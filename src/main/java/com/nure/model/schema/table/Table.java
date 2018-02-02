@@ -108,10 +108,12 @@ public class Table {
      * @param tableName the name of the table for which the keys are reset.
      */
     public void resetForeignKeyForTable(String tableName) {
-        List<ForeignKey> removedForeignKey = foreignKeys.stream().filter(
-                key -> key.getReferencedTableName().equals(tableName))
-                .collect(Collectors.toList());
-        foreignKeys.removeAll(removedForeignKey);
-        columns.addAll(removedForeignKey.stream().map(Column::new).collect(Collectors.toList()));
+        if (!foreignKeys.isEmpty()) {
+            List<ForeignKey> removedForeignKey = foreignKeys.stream().filter(
+                    key -> key.getReferencedTableName().equals(tableName))
+                    .collect(Collectors.toList());
+            foreignKeys.removeAll(removedForeignKey);
+            columns.addAll(removedForeignKey.stream().map(Column::new).collect(Collectors.toList()));
+        }
     }
 }

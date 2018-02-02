@@ -80,4 +80,8 @@ public class Schema {
     public Table getTable(int index) {
         return Sets.getElementByIndex(tables, index);
     }
+
+    public int sizeTables() {
+        return tables.size();
+    }
 }

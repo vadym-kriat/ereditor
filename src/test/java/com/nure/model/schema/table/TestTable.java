@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 /**
  * Created by Vadim_ on 02.02.2018.
@@ -14,12 +15,14 @@ import static org.junit.Assert.assertNotNull;
 public class TestTable {
 
     private Table table;
+    private Column column;
 
     @Before
     public void setUp() throws SchemeException {
         table = new Table("table");
         table.addColumn(new Column("column1"));
         table.addColumn(new Column("column2"));
+        column = new Column("column3");
     }
 
     @After
@@ -41,7 +44,6 @@ public class TestTable {
     @Test
     public void testGetColumnByIndex() throws SchemeException {
         assertEquals(2, table.sizeColumns());
-        Column column = new Column("column3");
         table.addColumn(column);
         assertEquals(3, table.sizeColumns());
         assertEquals(column, table.getColumn(2));
