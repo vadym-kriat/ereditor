@@ -35,32 +35,36 @@ public class ForeignKey extends Column {
         return referencedTable;
     }
 
-    public void setReferencedTable(String referencedTable) {
+    public ForeignKey setReferencedTable(String referencedTable) {
         this.referencedTable = referencedTable;
+        return this;
     }
 
     public String getReferencedColumnName() {
         return referencedColumnName;
     }
 
-    public void setReferencedColumnName(String referencedColumnName) {
+    public ForeignKey setReferencedColumnName(String referencedColumnName) {
         this.referencedColumnName = referencedColumnName;
+        return this;
     }
 
     public ForeignKeyOption getOnUpdate() {
         return onUpdate;
     }
 
-    public void setOnUpdate(ForeignKeyOption onUpdate) {
+    public ForeignKey setOnUpdate(ForeignKeyOption onUpdate) {
         this.onUpdate = onUpdate;
+        return this;
     }
 
     public ForeignKeyOption getOnDelete() {
         return onDelete;
     }
 
-    public void setOnDelete(ForeignKeyOption onDelete) {
+    public ForeignKey setOnDelete(ForeignKeyOption onDelete) {
         this.onDelete = onDelete;
+        return this;
     }
 
     @Override

@@ -27,9 +27,8 @@ public class TestSchema {
         table.addColumn(column);
 
         refTable = new Table("ref_table");
-        ForeignKey fk = new ForeignKey("sss", "fx");
-        fk.setReferencedTable("table");
-        fk.setReferencedColumnName("id");
+        ForeignKey fk = new ForeignKey("sss", "fx")
+                .setReferencedTable("table").setReferencedColumnName("id");
         refTable.addForeignKey(fk);
 
         schema.addTable(table);

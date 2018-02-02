@@ -4,8 +4,6 @@ import com.nure.model.schema.Schema;
 import com.nure.model.schema.exceptions.CreateSchemaException;
 import com.nure.model.schema.exceptions.SchemeException;
 
-import javax.xml.bind.ValidationException;
-
 /**
  * Created by Vadim_ on 31.01.2018.
  */
