@@ -1,11 +1,12 @@
 package com.nure.model.schema;
 
+import com.nure.model.schema.exceptions.IncorrectNameException;
+import com.nure.model.schema.exceptions.SchemeException;
 import com.nure.model.schema.exceptions.TableIsExistException;
 import com.nure.model.schema.table.Table;
 import com.nure.model.schema.util.NameValidator;
 import com.nure.model.schema.util.Sets;
 
-import javax.xml.bind.ValidationException;
 import java.io.IOException;
 import java.util.LinkedHashSet;
 import java.util.Properties;
@@ -36,7 +37,7 @@ public class Schema {
         this.tables = new LinkedHashSet<>();
     }
 
-    public Schema(String name) throws ValidationException {
+    public Schema(String name) throws SchemeException {
         this();
         setName(name);
     }
@@ -46,7 +47,7 @@ public class Schema {
         try {
             table.setName(String.format("%s%d", properties.getProperty("names.default.table.name"),
                     id.incrementAndGet()));
-        } catch (ValidationException e) {
+        } catch (SchemeException e) {
             throw new RuntimeException(e);
         }
         tables.add(table);
@@ -57,11 +58,11 @@ public class Schema {
         return name;
     }
 
-    public void setName(String name) throws ValidationException {
+    public void setName(String name) throws SchemeException {
         if (NameValidator.schemeNameIsValid(name)) {
             this.name = name;
         } else {
-            throw new ValidationException("The scheme name incorrectly.");
+            throw new IncorrectNameException("The scheme name incorrectly.");
         }
     }
 

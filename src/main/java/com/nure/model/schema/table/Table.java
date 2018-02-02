@@ -1,11 +1,12 @@
 package com.nure.model.schema.table;
 
 import com.nure.model.schema.exceptions.ColumnIsExistException;
+import com.nure.model.schema.exceptions.IncorrectNameException;
 import com.nure.model.schema.exceptions.SchemeException;
 import com.nure.model.schema.util.NameValidator;
 import com.nure.model.schema.util.Sets;
 
-import javax.xml.bind.ValidationException;
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -24,15 +25,20 @@ public class Table {
         foreignKeys = new LinkedHashSet<>();
     }
 
+    public Table(String name) throws SchemeException {
+        this();
+        setName(name);
+    }
+
     public String getName() {
         return name;
     }
 
-    public void setName(String name) throws ValidationException {
+    public void setName(String name) throws SchemeException {
         if (NameValidator.tableNameIsValid(name)) {
             this.name = name;
         } else {
-            throw new ValidationException("The table name incorrectly.");
+            throw new IncorrectNameException("The table name incorrectly.");
         }
     }
 
@@ -56,12 +62,28 @@ public class Table {
         foreignKeys.remove(key);
     }
 
+    public List<Column> listOfColumns() {
+        return new ArrayList<>(columns);
+    }
+
+    public List<ForeignKey> listOfForeignKeys() {
+        return new ArrayList<>(foreignKeys);
+    }
+
     public Column getColumn(int index) {
         return Sets.getElementByIndex(columns, index);
     }
 
     public ForeignKey getForeignKey(int index) {
         return Sets.getElementByIndex(foreignKeys, index);
+    }
+
+    public int sizeColumns() {
+        return columns.size();
+    }
+
+    public int sizeForeignKeys() {
+        return foreignKeys.size();
     }
 
     @Override

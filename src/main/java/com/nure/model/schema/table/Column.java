@@ -1,5 +1,7 @@
 package com.nure.model.schema.table;
 
+import com.nure.model.schema.exceptions.IncorrectNameException;
+import com.nure.model.schema.exceptions.SchemeException;
 import com.nure.model.schema.util.DatatypeLoader;
 import com.nure.model.schema.util.NameValidator;
 
@@ -18,7 +20,7 @@ public class Column {
     private boolean isUnsigned;
     private boolean isZeroFill;
 
-    public Column(String name) throws ValidationException {
+    public Column(String name) throws SchemeException {
         setName(name);
     }
 
@@ -37,12 +39,12 @@ public class Column {
         return name;
     }
 
-    public Column setName(String name) throws ValidationException {
+    public Column setName(String name) throws SchemeException {
         if (NameValidator.columnNameIsValid(name)) {
             this.name = name;
             return this;
         } else {
-            throw new ValidationException("Enter the name incorrectly.");
+            throw new IncorrectNameException("Enter the name incorrectly.");
         }
     }
 

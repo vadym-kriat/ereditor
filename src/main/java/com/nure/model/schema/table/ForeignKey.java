@@ -1,8 +1,8 @@
 package com.nure.model.schema.table;
 
+import com.nure.model.schema.exceptions.IncorrectNameException;
+import com.nure.model.schema.exceptions.SchemeException;
 import com.nure.model.schema.util.NameValidator;
-
-import javax.xml.bind.ValidationException;
 
 /**
  * Created by Vadim_ on 31.01.2018.
@@ -14,7 +14,7 @@ public class ForeignKey extends Column {
     private ForeignKeyOption onUpdate;
     private ForeignKeyOption onDelete;
 
-    public ForeignKey(String name, String fkName) throws ValidationException {
+    public ForeignKey(String name, String fkName) throws SchemeException {
         super(name);
         setFkName(fkName);
     }
@@ -23,11 +23,11 @@ public class ForeignKey extends Column {
         return fkName;
     }
 
-    public void setFkName(String fkName) throws ValidationException {
+    public void setFkName(String fkName) throws SchemeException {
         if (NameValidator.columnNameIsValid(fkName)) {
             this.fkName = fkName;
         } else {
-            throw new ValidationException("Enter the name incorrectly.");
+            throw new IncorrectNameException("Enter the name incorrectly.");
         }
     }
 
@@ -80,5 +80,16 @@ public class ForeignKey extends Column {
         result = 31 * result + fkName.hashCode();
         result += super.hashCode();
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "ForeignKey{" +
+                "fkName='" + fkName + '\'' +
+                ", referencedTable='" + referencedTable + '\'' +
+                ", referencedColumnName='" + referencedColumnName + '\'' +
+                ", onUpdate=" + onUpdate +
+                ", onDelete=" + onDelete +
+                '}';
     }
 }

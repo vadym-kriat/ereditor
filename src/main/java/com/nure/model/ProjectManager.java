@@ -2,6 +2,7 @@ package com.nure.model;
 
 import com.nure.model.schema.Schema;
 import com.nure.model.schema.exceptions.CreateSchemaException;
+import com.nure.model.schema.exceptions.SchemeException;
 
 import javax.xml.bind.ValidationException;
 
@@ -28,7 +29,7 @@ public class ProjectManager {
 
     }
 
-    public void createNewSchema(String name) throws CreateSchemaException, ValidationException {
+    public void createNewSchema(String name) throws CreateSchemaException, SchemeException {
         if (schema != null) {
             throw new CreateSchemaException("Schema already created.");
         }
