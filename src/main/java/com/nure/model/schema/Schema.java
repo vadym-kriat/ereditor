@@ -3,6 +3,7 @@ package com.nure.model.schema;
 import com.nure.model.schema.exceptions.TableIsExistException;
 import com.nure.model.schema.table.Table;
 import com.nure.model.schema.util.NameValidator;
+import com.nure.model.schema.util.Sets;
 
 import javax.xml.bind.ValidationException;
 import java.io.IOException;
@@ -73,5 +74,9 @@ public class Schema {
     public void removeTable(Table table) {
         tables.forEach(tb -> tb.resetForeignKeyForTable(table.getName()));
         tables.remove(table);
+    }
+
+    public Table getTable(int index) {
+        return Sets.getElementByIndex(tables, index);
     }
 }

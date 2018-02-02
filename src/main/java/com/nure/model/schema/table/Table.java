@@ -3,6 +3,7 @@ package com.nure.model.schema.table;
 import com.nure.model.schema.exceptions.ColumnIsExistException;
 import com.nure.model.schema.exceptions.SchemeException;
 import com.nure.model.schema.util.NameValidator;
+import com.nure.model.schema.util.Sets;
 
 import javax.xml.bind.ValidationException;
 import java.util.LinkedHashSet;
@@ -53,6 +54,14 @@ public class Table {
 
     public void removeForeignKey(ForeignKey key) {
         foreignKeys.remove(key);
+    }
+
+    public Column getColumn(int index) {
+        return Sets.getElementByIndex(columns, index);
+    }
+
+    public ForeignKey getForeignKey(int index) {
+        return Sets.getElementByIndex(foreignKeys, index);
     }
 
     @Override
