@@ -2,7 +2,7 @@ package com.nure.model.schema.table;
 
 import com.nure.model.schema.exceptions.IncorrectNameException;
 import com.nure.model.schema.exceptions.SchemeException;
-import com.nure.model.schema.util.DatatypeLoader;
+import com.nure.model.schema.util.DatatypeMapper;
 import com.nure.model.schema.util.NameValidator;
 
 import javax.xml.bind.ValidationException;
@@ -53,7 +53,7 @@ public class Column {
     }
 
     public Column setDatatype(String datatype) throws ValidationException {
-        if (DatatypeLoader.datatypeIsExist(datatype)) {
+        if (DatatypeMapper.datatypeIsExist(datatype)) {
             this.datatype = datatype;
             return this;
         } else {

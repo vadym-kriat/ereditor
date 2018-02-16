@@ -3,11 +3,12 @@ package com.nure.model;
 import com.nure.model.schema.Schema;
 import com.nure.model.schema.exceptions.CreateSchemaException;
 import com.nure.model.schema.exceptions.SchemeException;
+import com.nure.model.sql.Dialect;
 
 /**
  * Created by Vadim_ on 31.01.2018.
  */
-public class ProjectManager {
+public class ProjectManager implements Manager {
     private static volatile ProjectManager instance;
 
     public static ProjectManager getInstance() {
@@ -34,15 +35,22 @@ public class ProjectManager {
         this.schema = new Schema(name);
     }
 
-    public void exportSchemaToXMLFile(String fileName) {
-        //todo create method
-    }
-
-    public void loadSchemeFromXMLFile(String fileName) {
-        //todo create method
-    }
-
     public Schema getSchema() {
         return schema;
+    }
+
+    @Override
+    public void exportSchemeToXMLFile(String fileName) {
+
+    }
+
+    @Override
+    public void loadSchemeFromXMLFile(String fileName) {
+
+    }
+
+    @Override
+    public String generateDDLSQLQuery(Dialect dialect) {
+        return null;
     }
 }
