@@ -27,7 +27,7 @@ public class ProjectManager {
 
     }
 
-    public void createNewSchema(String name) throws CreateSchemaException, SchemeException {
+    public void createNewSchema(String name) throws SchemeException {
         if (schema != null) {
             throw new CreateSchemaException("Schema already created.");
         }

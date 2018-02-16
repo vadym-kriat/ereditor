@@ -6,14 +6,14 @@ package com.nure.model.schema.table;
 public enum ForeignKeyOption {
     RESTRICT("RESTRICT"), NO_ACTION("NO ACTION"), CASCADE("CASCADE"), SET_NULL("SET NULL");
 
-    private String sqlTitle;
+    private String sql;
 
-    ForeignKeyOption(String sqlTitle) {
-        this.sqlTitle = sqlTitle;
+    ForeignKeyOption(String sql) {
+        this.sql = sql;
     }
 
     @Override
     public String toString() {
-        return sqlTitle;
+        return sql;
     }
 }
