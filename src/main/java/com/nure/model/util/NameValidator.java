@@ -1,4 +1,4 @@
-package com.nure.model.schema.util;
+package com.nure.model.util;
 
 import java.io.IOException;
 import java.util.Properties;

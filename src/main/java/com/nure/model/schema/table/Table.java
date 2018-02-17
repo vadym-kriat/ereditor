@@ -3,8 +3,8 @@ package com.nure.model.schema.table;
 import com.nure.model.schema.exceptions.ColumnIsExistException;
 import com.nure.model.schema.exceptions.IncorrectNameException;
 import com.nure.model.schema.exceptions.SchemeException;
-import com.nure.model.schema.util.NameValidator;
-import com.nure.model.schema.util.Sets;
+import com.nure.model.util.NameValidator;
+import com.nure.model.util.Sets;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;

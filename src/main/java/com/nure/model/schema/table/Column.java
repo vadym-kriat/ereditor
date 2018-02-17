@@ -2,8 +2,8 @@ package com.nure.model.schema.table;
 
 import com.nure.model.schema.exceptions.IncorrectNameException;
 import com.nure.model.schema.exceptions.SchemeException;
-import com.nure.model.schema.util.DatatypeMapper;
-import com.nure.model.schema.util.NameValidator;
+import com.nure.model.util.DatatypeMapper;
+import com.nure.model.util.NameValidator;
 
 import javax.xml.bind.ValidationException;
 

@@ -1,4 +1,4 @@
-package com.nure.model.schema.util;
+package com.nure.model.util;
 
 import com.nure.model.sql.Dialect;
 import org.w3c.dom.Document;
