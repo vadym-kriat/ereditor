@@ -11,6 +11,6 @@ public class SQLQueryBuilderFactory {
         if (dialect == Dialect.SQLITE) {
             return new SQLiteQueryBuilderFactory();
         }
-        throw new NoSuchFactoryException();
+        throw new NoSuchFactoryException("No suitable query builder for SQL dialect: " + dialect);
     }
 }
