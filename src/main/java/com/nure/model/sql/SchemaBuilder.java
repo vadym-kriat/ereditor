@@ -6,12 +6,12 @@ import com.nure.model.schema.table.Table;
 /**
  * Created by Vadim_ on 16.02.2018.
  */
-public interface SchemeBuilder extends Builder {
+public interface SchemaBuilder extends Builder {
     void forScheme(Schema schema);
 
-    SchemeBuilder setName(String name);
+    SchemaBuilder setName(String name);
 
-    SchemeBuilder addTable(Table table);
+    SchemaBuilder addTable(Table table);
 
-    SchemeBuilder addTable(TableBuilder table);
+    SchemaBuilder addTable(TableBuilder table);
 }

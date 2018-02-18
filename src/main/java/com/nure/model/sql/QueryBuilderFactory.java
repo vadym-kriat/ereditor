@@ -5,7 +5,7 @@ package com.nure.model.sql;
  */
 public interface QueryBuilderFactory {
 
-    SchemeBuilder getSchemeBuilder();
+    SchemaBuilder getSchemeBuilder();
 
     TableBuilder getTableBuilder();
 

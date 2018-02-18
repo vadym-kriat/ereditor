@@ -17,6 +17,4 @@ public interface TableBuilder extends Builder {
     TableBuilder addColumn(ColumnBuilder column);
 
     TableBuilder addForeignKey(ForeignKey foreignKey);
-
-    TableBuilder addForeignKey(ForeignKeyBuilder foreignKey);
 }

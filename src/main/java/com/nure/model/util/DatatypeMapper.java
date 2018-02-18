@@ -18,14 +18,14 @@ import java.util.Properties;
  * Created by Vadim_ on 31.01.2018.
  */
 public class DatatypeMapper {
-    private static final Properties map;
+    private static Properties map;
     private static List<String> datatypes;
 
     static {
         map = new Properties();
         try {
             map.load(DatatypeMapper.class.
-                    getClassLoader().getResourceAsStream("datatype_map.map"));
+                    getClassLoader().getResourceAsStream("conf/datatype_map.properties"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -53,12 +53,12 @@ public class DatatypeMapper {
     }
 
     public static boolean datatypeIsExist(String datatype) {
-        return datatypes.contains(datatype);
+        return datatypes.contains(datatype.toUpperCase());
     }
 
     public static String getSpecificDatatypeFor(Dialect dialect, String datatype) {
         String dialectText = dialect.toString().toLowerCase();
-        return map.getProperty(String.format("%s.%s", dialectText, datatype));
+        return map.getProperty(String.format("%s.%s", dialectText, datatype.toLowerCase()));
     }
 
     public static List<String> listOfDatatypes() {
