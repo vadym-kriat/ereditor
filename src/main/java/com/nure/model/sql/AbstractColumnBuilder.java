@@ -14,16 +14,36 @@ public abstract class AbstractColumnBuilder implements ColumnBuilder {
     protected Set<ColumnConstraint> constraints;
     protected Set<String> customConstraint;
     protected String datatype;
-    protected String defaultValue;
+    protected Object defaultValue;
 
     protected AbstractColumnBuilder() {
         constraints = new HashSet<>();
+        customConstraint = new HashSet<>();
     }
 
     @Override
     public void forColumn(Column column) {
         this.name = column.getName();
-
+        if (column.isPK()) {
+            constraints.add(ColumnConstraint.PRIMARY_KEY);
+        }
+        if (column.isAutoIncrement()) {
+            constraints.add(ColumnConstraint.AUTO_INCREMENT);
+        }
+        if (column.isNotNull()) {
+            constraints.add(ColumnConstraint.NOT_NULL);
+        }
+        if (column.isUnique()) {
+            constraints.add(ColumnConstraint.UNIQUE);
+        }
+        if (column.isUnsigned()) {
+            constraints.add(ColumnConstraint.UNSIGNED);
+        }
+        if (column.isZeroFill()) {
+            constraints.add(ColumnConstraint.ZERO_FILL);
+        }
+        this.datatype = column.getDatatype();
+        this.defaultValue = column.getDefValue();
     }
 
     @Override
@@ -39,7 +59,7 @@ public abstract class AbstractColumnBuilder implements ColumnBuilder {
     }
 
     @Override
-    public ColumnBuilder addDefaultValue(String defaultValue) {
+    public ColumnBuilder addDefaultValue(Object defaultValue) {
         this.defaultValue = defaultValue;
         return this;
     }

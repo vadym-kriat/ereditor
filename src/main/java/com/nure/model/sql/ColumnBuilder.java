@@ -12,7 +12,7 @@ public interface ColumnBuilder extends Builder {
 
     ColumnBuilder addConstraint(ColumnConstraint constraint);
 
-    ColumnBuilder addDefaultValue(String defaultValue);
+    ColumnBuilder addDefaultValue(Object defaultValue);
 
     ColumnBuilder setCustomDatatype(String datatype);
 
