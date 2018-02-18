@@ -4,7 +4,19 @@ package com.nure.model.sql;
  * Created by Vadim_ on 16.02.2018.
  */
 public enum ColumnConstraint {
-    PRIMARY_KEY, NOT_NULL, UNIQUE, BINARY,
-    UNSIGNED, ZERO_FILL, AUTO_INCREMENT, GENERATED,
-    FOREIGN_KEY, REFERENCES, ON_DELETE, ON_UPDATE
+    PRIMARY_KEY("PRIMARY KEY"), AUTO_INCREMENT("AUTOINCREMENT"), NOT_NULL("NOT NULL"), UNIQUE("UNIQUE"),
+    BINARY("BINARY"), UNSIGNED("UNSIGNED"), ZERO_FILL("ZERO FILL"), GENERATED("GENERATED"),
+    FOREIGN_KEY("FOREIGN KEY"), REFERENCES("REFERENCES"),
+    ON_DELETE("ON DELETE"), ON_UPDATE("ON UPDATE");
+
+    private String sql;
+
+    ColumnConstraint(String sql) {
+        this.sql = sql;
+    }
+
+    @Override
+    public String toString() {
+        return sql;
+    }
 }
