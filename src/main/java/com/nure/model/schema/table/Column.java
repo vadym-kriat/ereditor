@@ -15,6 +15,7 @@ public class Column {
     private String datatype;
     private Object defValue;
     private boolean isPK;
+    private boolean isAutoIncrement;
     private boolean isNotNull;
     private boolean isUnique;
     private boolean isUnsigned;
@@ -29,6 +30,7 @@ public class Column {
         this.datatype = key.getDatatype();
         this.defValue = key.getDefValue();
         this.isPK = key.isPK();
+        this.isAutoIncrement = key.isAutoIncrement();
         this.isNotNull = key.isNotNull();
         this.isUnique = key.isUnique();
         this.isUnsigned = key.isUnsigned();
@@ -77,6 +79,14 @@ public class Column {
     public Column setPK(boolean PK) {
         isPK = PK;
         return this;
+    }
+
+    public boolean isAutoIncrement() {
+        return isAutoIncrement;
+    }
+
+    public void setAutoIncrement(boolean autoIncrement) {
+        isAutoIncrement = autoIncrement;
     }
 
     public boolean isNotNull() {
