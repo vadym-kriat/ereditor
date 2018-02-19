@@ -12,6 +12,4 @@ public interface SchemaBuilder extends Builder {
     SchemaBuilder setName(String name);
 
     SchemaBuilder addTable(Table table);
-
-    SchemaBuilder addTable(TableBuilder table);
 }

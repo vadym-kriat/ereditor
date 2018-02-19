@@ -14,7 +14,6 @@ public abstract class AbstractTableBuilder implements TableBuilder {
 
     protected String name;
     protected List<Column> columns;
-    protected List<ColumnBuilder> columnBuilders;
     protected List<ForeignKey> foreignKeys;
 
     protected static final String CREATE_TABLE = "CREATE TABLE";
@@ -26,7 +25,6 @@ public abstract class AbstractTableBuilder implements TableBuilder {
 
     protected AbstractTableBuilder() {
         columns = new ArrayList<>();
-        columnBuilders = new ArrayList<>();
         foreignKeys = new ArrayList<>();
     }
 
@@ -46,12 +44,6 @@ public abstract class AbstractTableBuilder implements TableBuilder {
     @Override
     public TableBuilder addColumn(Column column) {
         this.columns.add(column);
-        return this;
-    }
-
-    @Override
-    public TableBuilder addColumn(ColumnBuilder column) {
-        this.columnBuilders.add(column);
         return this;
     }
 
