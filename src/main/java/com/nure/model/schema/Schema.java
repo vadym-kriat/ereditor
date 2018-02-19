@@ -8,9 +8,7 @@ import com.nure.model.util.NameValidator;
 import com.nure.model.util.Sets;
 
 import java.io.IOException;
-import java.util.LinkedHashSet;
-import java.util.Properties;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -79,6 +77,14 @@ public class Schema {
 
     public Table getTable(int index) {
         return Sets.getElementByIndex(tables, index);
+    }
+
+    public Set<Table> getTables() {
+        return tables;
+    }
+
+    public List<Table> listOfTables() {
+        return new ArrayList<>(tables);
     }
 
     public int sizeTables() {
