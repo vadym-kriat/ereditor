@@ -17,8 +17,6 @@ public abstract class AbstractColumnBuilder implements ColumnBuilder {
     protected Object defaultValue;
 
     protected static final String SPACE = " ";
-    protected static final String LINE_SEP = System.lineSeparator();
-    protected static final String COMMA = ",";
 
     protected AbstractColumnBuilder() {
         constraints = new HashSet<>();

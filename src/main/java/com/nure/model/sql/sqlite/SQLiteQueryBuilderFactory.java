@@ -13,16 +13,11 @@ public class SQLiteQueryBuilderFactory implements QueryBuilderFactory {
 
     @Override
     public TableBuilder getTableBuilder() {
-        return null;
+        return new SQLiteTableBuilder();
     }
 
     @Override
     public ColumnBuilder getColumnBuilder() {
         return new SQLiteColumnBuilder();
-    }
-
-    @Override
-    public ForeignKeyBuilder getForeignKeyBuilder() {
-        return null;
     }
 }

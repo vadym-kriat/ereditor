@@ -17,6 +17,8 @@ public class ForeignKey extends Column {
     public ForeignKey(String name, String fkName) throws SchemeException {
         super(name);
         setFkName(fkName);
+        this.onUpdate = ForeignKeyOption.NO_ACTION;
+        this.onDelete = ForeignKeyOption.NO_ACTION;
     }
 
     public String getFkName() {

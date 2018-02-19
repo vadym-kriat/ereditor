@@ -17,6 +17,13 @@ public abstract class AbstractTableBuilder implements TableBuilder {
     protected List<ColumnBuilder> columnBuilders;
     protected List<ForeignKey> foreignKeys;
 
+    protected static final String CREATE_TABLE = "CREATE TABLE";
+    protected static final String IF_NOT_EXISTS = "IF NOT EXISTS";
+    protected static final String LINE_SEP = System.lineSeparator();
+    protected static final String SPACE = " ";
+    protected static final String SEMICOLON = ";";
+    protected static final String COMMA = ",";
+
     protected AbstractTableBuilder() {
         columns = new ArrayList<>();
         columnBuilders = new ArrayList<>();

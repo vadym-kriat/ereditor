@@ -59,7 +59,7 @@ public class Column {
             this.datatype = datatype;
             return this;
         } else {
-            throw new ValidationException("This type of data does not exist.");
+            throw new ValidationException("This type of data does not exist: " + datatype);
         }
     }
 

@@ -10,6 +10,4 @@ public interface QueryBuilderFactory {
     TableBuilder getTableBuilder();
 
     ColumnBuilder getColumnBuilder();
-
-    ForeignKeyBuilder getForeignKeyBuilder();
 }
