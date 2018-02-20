@@ -5,7 +5,7 @@ import com.nure.model.sql.*;
 /**
  * Created by Vadim_ on 17.02.2018.
  */
-public class SQLiteQueryBuilderFactory implements QueryBuilderFactory {
+class SQLiteQueryBuilderFactory implements QueryBuilderFactory {
     @Override
     public SchemaBuilder getSchemeBuilder() {
         return new SQLiteSchemaBuilder();
