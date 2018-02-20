@@ -8,7 +8,7 @@ import com.nure.model.sql.*;
 public class SQLiteQueryBuilderFactory implements QueryBuilderFactory {
     @Override
     public SchemaBuilder getSchemeBuilder() {
-        return null;
+        return new SQLiteSchemaBuilder();
     }
 
     @Override
