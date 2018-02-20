@@ -10,5 +10,5 @@ public interface Manager {
 
     void loadSchemeFromXMLFile(String fileName);
 
-    String generateDDLSQLQuery(Dialect dialect);
+    String generateDDLSQLQuery(Dialect dialect) throws Exception;
 }

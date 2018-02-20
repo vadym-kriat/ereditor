@@ -4,6 +4,8 @@ import com.nure.model.schema.Schema;
 import com.nure.model.schema.exceptions.CreateSchemaException;
 import com.nure.model.schema.exceptions.SchemeException;
 import com.nure.model.sql.Dialect;
+import com.nure.model.sql.SQLQueryBuilderFactory;
+import com.nure.model.sql.SchemaBuilder;
 
 /**
  * Created by Vadim_ on 31.01.2018.
@@ -50,7 +52,9 @@ public class ProjectManager implements Manager {
     }
 
     @Override
-    public String generateDDLSQLQuery(Dialect dialect) {
-        return null;
+    public String generateDDLSQLQuery(Dialect dialect) throws Exception {
+        SchemaBuilder schemaBuilder = SQLQueryBuilderFactory.newInstance(dialect).getSchemeBuilder();
+        schemaBuilder.forScheme(schema);
+        return schemaBuilder.buildQuery();
     }
 }
