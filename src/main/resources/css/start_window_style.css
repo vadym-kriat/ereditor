@@ -1,0 +1,36 @@
+* {
+	-fx-main-color: #800000;
+	-fx-hover-color: #993939;
+}
+
+.lm-btn, .db-btn {
+	-fx-background-position: center;
+	-fx-background-repeat: no-repeat;
+	-fx-background-size: 200px auto;
+	-fx-background-color: white;
+}
+
+.lm-btn {
+	-fx-background-image: url("../images/start_window/logic_model_1.png");
+}
+
+.lm-btn:hover {
+	-fx-background-image: url("../images/start_window/logic_model_hover_1.png");
+}
+
+.db-btn {
+	-fx-background-image: url("../images/start_window/database_1.png");
+}
+
+.db-btn:hover {
+	-fx-background-image: url("../images/start_window/database_hover_1.png");
+}
+
+.background {
+	-fx-background-color: white;
+}
+
+.background Line {
+	-fx-stroke: -fx-main-color;
+	-fx-stroke-width: 3px;
+}
