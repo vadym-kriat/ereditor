@@ -1,0 +1,40 @@
+* {
+    -fx-main-color: #800000;
+    -fx-hover-color: #993939;
+}
+
+.root {
+    -fx-font: 15px "Century Gothic";
+    -fx-focus-color: none;
+}
+
+#split-pane {
+    -fx-background-color: -fx-main-color;
+    /*-fx-border-color: #800000;*/
+    -fx-border-width: 0;
+    /*-fx-border-style: solid none none none;*/
+
+}
+
+.split-pane:horizontal > .split-pane-divider {
+    -fx-background-color: -fx-main-color;
+    -fx-padding: 1;
+}
+
+#field-pane {
+    -fx-background-color: white;
+}
+
+.titled-pane {
+    -fx-text-fill: white;
+}
+
+.titled-pane .title {
+    -fx-background-color: -fx-main-color;
+    -fx-padding: 5;
+}
+
+.text-field {
+    -fx-border-color: -fx-main-color;
+    -fx-text-fill: -fx-main-color;
+}

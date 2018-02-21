@@ -1,0 +1,43 @@
+* {
+    -fx-main-color: #800000;
+    -fx-hover-color: #993939;
+}
+
+.menu-bar {
+    -fx-background-color: -fx-main-color;
+    -fx-padding: 0;
+    -fx-border-color: -fx-main-color -fx-main-color gray -fx-main-color;
+    -fx-border-width: 1px;
+}
+
+.menu {
+    /* The File menu item */
+}
+
+.menu .label, .menu:hover .label, #menu-recent:hover .label {
+    /* Styles the text on a menu item */
+    -fx-text-fill: white;
+}
+
+.menu:hover {
+    /* menu when it's being hover */
+    -fx-background-color: -fx-hover-color;
+}
+
+.menu:showing {
+    /* menu when it's being shown (activated) */
+    -fx-background-color: white;
+}
+
+.menu:showing .label, #menu-recent .label {
+    /* Styles the text on a menu item when activated */
+    -fx-text-fill: -fx-main-color;
+}
+
+.menu-item:focused {
+    -fx-background-color: -fx-hover-color;
+}
+
+.menu-item:focused .label {
+    -fx-text-fill: white;
+}
