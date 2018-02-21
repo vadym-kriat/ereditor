@@ -1,0 +1,47 @@
+* {
+    -fx-main-color: #800000;
+    -fx-hover-color: #993939;
+}
+
+.root {
+    -fx-focus-color: none;
+    -fx-background-color: white;
+    -fx-font: 15px "Century Gothic";
+}
+
+.text-field, .text-area, .list-view {
+    -fx-border-color: -fx-main-color;
+}
+
+.label {
+    -fx-text-fill: -fx-main-color;
+}
+
+.button {
+    -fx-background-color: -fx-main-color;
+    -fx-text-fill: white;
+}
+
+.titled-pane {
+    -fx-text-fill: white;
+}
+
+.titled-pane .title {
+    -fx-background-color: -fx-main-color;
+}
+
+.check-box, .combo-box .cell {
+    -fx-text-fill: -fx-main-color;
+}
+
+.check-box .box, .combo-box {
+    -fx-background-color: white;
+    -fx-border-color: -fx-main-color;
+}
+
+.check-box:selected .box .mark, .combo-box-base .arrow {
+    -fx-background-color: -fx-main-color;
+}
+
+/*todo change combobox slider color and width*/
+
