@@ -6,6 +6,10 @@ import com.nure.model.schema.exceptions.SchemeException;
 import com.nure.model.util.NameValidator;
 import com.nure.model.util.Sets;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -15,12 +19,19 @@ import java.util.stream.Collectors;
 /**
  * Created by Vadim_ on 31.01.2018.
  */
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Table {
+    @XmlElement(name = "name")
     private String name;
+    @XmlElementWrapper(name = "columns")
+    @XmlElement(name = "column")
     private Set<Column> columns;
+    @XmlElementWrapper(name = "keys")
+    @XmlElement(name = "foreignKeys")
     private Set<ForeignKey> foreignKeys;
 
     public Table() {
+        name = "";
         columns = new LinkedHashSet<>();
         foreignKeys = new LinkedHashSet<>();
     }

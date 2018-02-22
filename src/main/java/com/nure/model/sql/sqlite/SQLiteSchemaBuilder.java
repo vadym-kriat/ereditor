@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 /**
  * Created by Vadim_ on 19.02.2018.
  */
-public class SQLiteSchemaBuilder extends AbstractSchemaBuilder {
+class SQLiteSchemaBuilder extends AbstractSchemaBuilder {
 
     @Override
     public String buildQuery() {

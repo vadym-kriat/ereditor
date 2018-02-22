@@ -4,3 +4,6 @@ ereditor.iml
 # bin files
 target/
 out/
+
+# xml root files
+/*.xml

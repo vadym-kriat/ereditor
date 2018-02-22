@@ -6,20 +6,37 @@ import com.nure.model.util.DatatypeMapper;
 import com.nure.model.util.NameValidator;
 
 import javax.xml.bind.ValidationException;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 
 /**
  * Created by Vadim_ on 31.01.2018.
  */
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Column {
+    @XmlElement(name = "name")
     private String name;
+    @XmlElement(name = "datatype")
     private String datatype;
+    @XmlElement(name = "defaultValue")
     private Object defValue;
+    @XmlAttribute(name = "isPrimaryKey")
     private boolean isPK;
+    @XmlAttribute(name = "isAutoIncrement")
     private boolean isAutoIncrement;
+    @XmlAttribute(name = "isNotNull")
     private boolean isNotNull;
+    @XmlAttribute(name = "isUnique")
     private boolean isUnique;
+    @XmlAttribute(name = "isUnsigned")
     private boolean isUnsigned;
+    @XmlAttribute(name = "isZeroFill")
     private boolean isZeroFill;
+
+    public Column() {
+    }
 
     public Column(String name) throws SchemeException {
         setName(name);

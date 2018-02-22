@@ -11,7 +11,7 @@ import java.util.Date;
 /**
  * Created by Vadim_ on 17.02.2018.
  */
-public class SQLiteColumnBuilder extends AbstractColumnBuilder {
+class SQLiteColumnBuilder extends AbstractColumnBuilder {
 
     @Override
     public String buildQuery() {

@@ -14,7 +14,7 @@ import java.util.stream.Stream;
 /**
  * Created by Vadim_ on 18.02.2018.
  */
-public class SQLiteTableBuilder extends AbstractTableBuilder {
+class SQLiteTableBuilder extends AbstractTableBuilder {
 
     private String[] buildColumnsSQL(List<Column> columns) {
         String[] declareColumns = new String[columns.size()];
