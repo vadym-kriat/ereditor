@@ -9,6 +9,7 @@ import com.nure.model.util.Sets;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -22,8 +23,10 @@ import java.util.stream.Collectors;
 public class Table {
     @XmlElement(name = "name")
     private String name;
-    @XmlElement(name = "columns")
+    @XmlElementWrapper(name = "columns")
+    @XmlElement(name = "column")
     private Set<Column> columns;
+    @XmlElementWrapper(name = "keys")
     @XmlElement(name = "foreignKeys")
     private Set<ForeignKey> foreignKeys;
 

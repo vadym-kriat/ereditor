@@ -7,10 +7,7 @@ import com.nure.model.schema.table.Table;
 import com.nure.model.util.NameValidator;
 import com.nure.model.util.Sets;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.*;
 import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -24,7 +21,8 @@ public class Schema {
     private static AtomicInteger id;
     @XmlElement(name = "name")
     private String name;
-    @XmlElement(name = "tables")
+    @XmlElementWrapper(name = "tables")
+    @XmlElement(name = "table")
     private Set<Table> tables;
     private static Properties properties;
 
