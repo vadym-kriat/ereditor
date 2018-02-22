@@ -14,6 +14,7 @@ import java.util.HashMap;
 
 public class EReditorStageHolder {
     private Stage primaryStage;
+    private Stage modalStage;
     private static EReditorStageHolder instance;
     private static HashMap<Window, Parent> roots;
 
@@ -30,8 +31,8 @@ public class EReditorStageHolder {
         try {
             roots.put(START, loader.load(getClass().getResource("/fxml/start_window.fxml")));
             roots.put(MAIN, loader.load(getClass().getResource("/fxml/main_window.fxml")));
-            roots.put(EDIT_ENTITY, loader.load(getClass().getResource("/fxml/edit_entity_window.)fxml"));
-            roots.put(CREATE_MODEL, loader.load(getClass().getResource("/fxml/create_model_window).fxml"));
+            roots.put(EDIT_ENTITY, loader.load(getClass().getResource("/fxml/edit_entity_window.fxml")));
+            roots.put(CREATE_MODEL, loader.load(getClass().getResource("/fxml/create_model_window.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -41,20 +42,21 @@ public class EReditorStageHolder {
         switch (windowName) {
             case MAIN:
             case START:
+                primaryStage.hide();
                 primaryStage.setScene(new Scene(roots.get(windowName), windowName.getWidth(), windowName.getHeight()));
                 primaryStage.setResizable(windowName.isResizable());
+                primaryStage.setMaximized(windowName.isResizable());
                 primaryStage.setTitle(windowName.getName());
                 primaryStage.show();
                 break;
             case EDIT_ENTITY:
             case CREATE_MODEL:
-                Stage stage = new Stage();
-                stage.setScene(new Scene(roots.get(windowName), windowName.getWidth(), windowName.getHeight()));
-                stage.setResizable(windowName.isResizable());
-                stage.setTitle(windowName.getName());
-                stage.initModality(Modality.WINDOW_MODAL);
-                stage.initOwner(primaryStage);
-                stage.show();
+                modalStage.setScene(new Scene(roots.get(windowName), windowName.getWidth(), windowName.getHeight()));
+                modalStage.setResizable(windowName.isResizable());
+                modalStage.setTitle(windowName.getName());
+                modalStage.initModality(Modality.WINDOW_MODAL);
+                modalStage.initOwner(primaryStage);
+                modalStage.show();
                 break;
         }
     }
@@ -64,5 +66,7 @@ public class EReditorStageHolder {
             throw new IOException("Stage already set!");
         }
         this.primaryStage = primaryStage;
+
+        modalStage = new Stage();
     }
 }

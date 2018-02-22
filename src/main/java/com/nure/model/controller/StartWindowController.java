@@ -9,10 +9,14 @@ import java.util.ResourceBundle;
 public class StartWindowController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        
+        ControllersManager.getInstance().setController(this);
     }
 
     public void openLMEditor(ActionEvent actionEvent) {
-        
+        ControllersManager.getInstance().startLMeditor();
+    }
+
+    public void openDBEditor(ActionEvent actionEvent) {
+        //todo ControllersManager.getInstance().startDBeditor();
     }
 }
