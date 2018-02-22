@@ -1,5 +1,6 @@
 package com.nure.model;
 
+import com.nure.model.io.SchemaFileManager;
 import com.nure.model.schema.Schema;
 import com.nure.model.schema.exceptions.CreateSchemaException;
 import com.nure.model.schema.exceptions.SchemeException;
@@ -42,13 +43,15 @@ public class ProjectManager implements Manager {
     }
 
     @Override
-    public void exportSchemeToXMLFile(String fileName) {
-
+    public void exportSchemeToFile(String fileName) throws Exception {
+        SchemaFileManager manager = new SchemaFileManager(fileName);
+        manager.save(schema);
     }
 
     @Override
-    public void loadSchemeFromXMLFile(String fileName) {
-
+    public void loadSchemeFromFile(String fileName) throws Exception {
+        SchemaFileManager manager = new SchemaFileManager(fileName);
+        this.schema = manager.load();
     }
 
     @Override

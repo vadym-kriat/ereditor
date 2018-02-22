@@ -6,9 +6,9 @@ import com.nure.model.sql.Dialect;
  * Created by Vadim_ on 16.02.2018.
  */
 public interface Manager {
-    void exportSchemeToXMLFile(String fileName);
+    void exportSchemeToFile(String fileName) throws Exception;
 
-    void loadSchemeFromXMLFile(String fileName);
+    void loadSchemeFromFile(String fileName) throws Exception;
 
     String generateDDLSQLQuery(Dialect dialect) throws Exception;
 }
