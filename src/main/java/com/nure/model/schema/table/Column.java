@@ -35,6 +35,9 @@ public class Column {
     @XmlAttribute(name = "isZeroFill")
     private boolean isZeroFill;
 
+    public Column() {
+    }
+
     public Column(String name) throws SchemeException {
         setName(name);
     }

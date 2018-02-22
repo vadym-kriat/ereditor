@@ -24,6 +24,10 @@ public class ForeignKey extends Column {
     @XmlElement(name = "onDelete")
     private ForeignKeyOption onDelete;
 
+    public ForeignKey() {
+        super();
+    }
+
     public ForeignKey(String name, String fkName) throws SchemeException {
         super(name);
         setFkName(fkName);
