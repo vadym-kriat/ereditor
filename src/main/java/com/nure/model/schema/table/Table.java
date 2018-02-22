@@ -31,6 +31,7 @@ public class Table {
     private Set<ForeignKey> foreignKeys;
 
     public Table() {
+        name = "";
         columns = new LinkedHashSet<>();
         foreignKeys = new LinkedHashSet<>();
     }
