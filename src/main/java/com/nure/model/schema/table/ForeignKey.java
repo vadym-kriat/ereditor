@@ -4,14 +4,24 @@ import com.nure.model.schema.exceptions.IncorrectNameException;
 import com.nure.model.schema.exceptions.SchemeException;
 import com.nure.model.util.NameValidator;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+
 /**
  * Created by Vadim_ on 31.01.2018.
  */
+@XmlAccessorType(XmlAccessType.FIELD)
 public class ForeignKey extends Column {
+    @XmlElement(name = "fkName")
     private String fkName;
+    @XmlElement(name = "referencedTable")
     private String referencedTable;
+    @XmlElement(name = "referencedColumnName")
     private String referencedColumnName;
+    @XmlElement(name = "onUpdate")
     private ForeignKeyOption onUpdate;
+    @XmlElement(name = "onDelete")
     private ForeignKeyOption onDelete;
 
     public ForeignKey(String name, String fkName) throws SchemeException {
