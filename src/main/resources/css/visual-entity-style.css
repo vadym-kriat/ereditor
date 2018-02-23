@@ -1,0 +1,45 @@
+* {
+    -fx-main-color: #800000;
+}
+
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-background-color: -fx-main-color;
+}
+
+.tab-pane
+{
+    -fx-tab-min-width: 50px;
+    -fx-border-color: -fx-main-color;
+}
+
+.tab .tab-label {
+    -fx-text-fill: white;
+}
+
+.tab-pane .tab {
+    -fx-background-color: -fx-main-color;
+}
+
+.list-cell .label {
+    -fx-text-fill: -fx-main-color;
+}
+
+.null, .not-null, .pk, .fk {
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 20px;
+    -fx-background-color: transparent;
+}
+
+.null {
+    -fx-background-image: url("../images/attributes_icons/rhombus-outline.png");
+}
+.not-null {
+    -fx-background-image: url("../images/attributes_icons/rhombus.png");
+}
+.pk {
+    -fx-background-image: url("../images/attributes_icons/key-variant.png");
+}
+.fk {
+    -fx-background-image: url("../images/attributes_icons/key.png");
+}

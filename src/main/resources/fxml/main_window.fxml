@@ -55,7 +55,7 @@
                             prefWidth="184.0" styleClass="red-bar-style" text="Diagram">
                     <content>
                         <AnchorPane id="field-pane" fx:id="workSpace" minHeight="0.0" minWidth="0.0" prefHeight="300.0"
-                                    prefWidth="300.0">
+                                    prefWidth="300.0" stylesheets="@../css/visual-entity-style.css">
 
                         </AnchorPane>
                     </content>

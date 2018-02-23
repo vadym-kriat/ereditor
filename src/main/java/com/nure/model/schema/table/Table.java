@@ -49,7 +49,7 @@ public class Table {
         if (NameValidator.tableNameIsValid(name)) {
             this.name = name;
         } else {
-            throw new IncorrectNameException("The table name incorrectly.");
+            throw new IncorrectNameException("The table name is incorrect.");
         }
     }
 
@@ -126,5 +126,11 @@ public class Table {
             foreignKeys.removeAll(removedForeignKey);
             columns.addAll(removedForeignKey.stream().map(Column::new).collect(Collectors.toList()));
         }
+    }
+
+    public List<Column> getAllColumns() {
+        List<Column> columns = new ArrayList<>(listOfColumns());
+        columns.addAll(listOfForeignKeys());
+        return columns;
     }
 }
