@@ -1,5 +1,6 @@
 * {
     -fx-main-color: #800000;
+    -fx-hover-color: #993939;
 }
 
 .tab-pane .tab-header-area .tab-header-background {
@@ -42,4 +43,15 @@
 }
 .fk {
     -fx-background-image: url("../images/attributes_icons/key.png");
+}
+
+.line {
+    -fx-stroke: -fx-main-color;
+    -fx-stroke-width: 2px;
+    -fx-stroke-dash-array: 25 10;
+}
+
+.circle {
+    -fx-stroke: -fx-main-color;
+    -fx-stroke-width: 2px;
 }
