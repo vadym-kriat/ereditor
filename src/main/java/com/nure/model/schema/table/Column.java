@@ -22,6 +22,8 @@ public class Column {
     private String datatype;
     @XmlElement(name = "defaultValue")
     private Object defValue;
+    @XmlElement(name = "description")
+    private String description;
     @XmlAttribute(name = "isPrimaryKey")
     private boolean isPK;
     @XmlAttribute(name = "isAutoIncrement")
@@ -42,16 +44,21 @@ public class Column {
         setName(name);
     }
 
+    public Column(Column column) {
+        this.name = column.getName();
+        this.datatype = column.getDatatype();
+        this.defValue = column.getDefValue();
+        this.description = column.getDescription();
+        this.isPK = column.isPK();
+        this.isAutoIncrement = column.isAutoIncrement();
+        this.isNotNull = column.isNotNull();
+        this.isUnique = column.isUnique();
+        this.isUnsigned = column.isUnsigned();
+        this.isZeroFill = column.isZeroFill();
+    }
+
     public Column(ForeignKey key) {
-        this.name = key.getName();
-        this.datatype = key.getDatatype();
-        this.defValue = key.getDefValue();
-        this.isPK = key.isPK();
-        this.isAutoIncrement = key.isAutoIncrement();
-        this.isNotNull = key.isNotNull();
-        this.isUnique = key.isUnique();
-        this.isUnsigned = key.isUnsigned();
-        this.isZeroFill = key.isZeroFill();
+        this((Column) key);
     }
 
     public String getName() {
@@ -87,6 +94,14 @@ public class Column {
     public Column setDefValue(Object defValue) {
         this.defValue = defValue;
         return this;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public boolean isPK() {

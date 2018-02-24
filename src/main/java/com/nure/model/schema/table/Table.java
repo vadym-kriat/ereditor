@@ -41,6 +41,15 @@ public class Table {
         setName(name);
     }
 
+    public Table(Table table) {
+        super();
+        this.name = table.getName();
+        columns.addAll(table.getColumns().stream().map(
+                column -> column = new Column(column)).collect(Collectors.toList()));
+        foreignKeys.addAll(table.getForeignKeys().stream().map(
+                key -> key = new ForeignKey(key)).collect(Collectors.toList()));
+    }
+
     public String getName() {
         return name;
     }
@@ -71,6 +80,14 @@ public class Table {
 
     public void removeForeignKey(ForeignKey key) {
         foreignKeys.remove(key);
+    }
+
+    public Set<Column> getColumns() {
+        return columns;
+    }
+
+    public Set<ForeignKey> getForeignKeys() {
+        return foreignKeys;
     }
 
     public List<Column> listOfColumns() {

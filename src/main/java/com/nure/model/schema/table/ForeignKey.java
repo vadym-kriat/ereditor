@@ -35,6 +35,19 @@ public class ForeignKey extends Column {
         this.onDelete = ForeignKeyOption.NO_ACTION;
     }
 
+    public ForeignKey(Column column) {
+        super(column);
+    }
+
+    public ForeignKey(ForeignKey foreignKey) {
+        super((Column) foreignKey);
+        this.fkName = foreignKey.getFkName();
+        this.referencedTable = foreignKey.getReferencedTableName();
+        this.referencedColumnName = foreignKey.getReferencedColumnName();
+        this.onUpdate = foreignKey.getOnUpdate();
+        this.onDelete = foreignKey.getOnDelete();
+    }
+
     public String getFkName() {
         return fkName;
     }

@@ -1,5 +1,6 @@
 package com.nure.model.schema;
 
+import com.nure.model.io.SchemaFileManager;
 import com.nure.model.schema.table.Column;
 import com.nure.model.schema.table.ForeignKey;
 import com.nure.model.schema.table.ForeignKeyOption;
@@ -13,7 +14,13 @@ import com.nure.model.sql.TableBuilder;
  */
 public class Test {
     public static void main(String[] args) throws Exception {
-        TableBuilder tableBuilder = SQLQueryBuilderFactory.newInstance(Dialect.SQLITE).getTableBuilder();
+        Schema schema = new Schema("new_schema");
+
+        Table table1 = new Table("temp");
+        Column column = new Column("temp1");
+        column.setDatatype("INT").setPK(true);
+        table1.addColumn(column);
+
         Table table = new Table("suppliers");
         Column column1 = new Column("supplier_id");
         column1.setDatatype("INT").setPK(true);
@@ -37,7 +44,14 @@ public class Test {
         table.addColumn(column1);
         table.addColumn(column2);
         table.addColumn(column3);
-        tableBuilder.forTable(table);
-        System.out.println(tableBuilder.buildQuery());
+
+        schema.addTable(table);
+        schema.addTable(table1);
+
+        SchemaFileManager manager = new SchemaFileManager("out.xml");
+        manager.save(schema);
+
+        Schema schema1 = manager.load();
+
     }
 }
