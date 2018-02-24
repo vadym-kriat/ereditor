@@ -42,7 +42,7 @@ public class Table {
     }
 
     public Table(Table table) {
-        super();
+        this();
         this.name = table.getName();
         columns.addAll(table.getColumns().stream().map(
                 column -> column = new Column(column)).collect(Collectors.toList()));
