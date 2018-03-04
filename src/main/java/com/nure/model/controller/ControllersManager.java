@@ -1,7 +1,9 @@
 package com.nure.model.controller;
 
-import com.nure.model.Main;
-import com.nure.model.util.Window;
+import com.nure.model.ProjectManager;
+import com.nure.model.view.VisualEntity;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.Initializable;
 import javafx.stage.Stage;
 
@@ -41,5 +43,18 @@ public class ControllersManager {
 
     public void startLMeditor() {
         EReditorStageHolder.getInstance().openWindow(MAIN);
+    }
+
+    public void editEntity(VisualEntity visualEntity) {
+        editEntityWindowController.setEntity(visualEntity.getEntity());
+        BooleanProperty isChanged = new SimpleBooleanProperty(false);
+        editEntityWindowController.setIsChanged(isChanged);
+        EReditorStageHolder.getInstance().openWindow(EDIT_ENTITY);
+        if (isChanged.get()) {
+            ProjectManager.getInstance().getSchema().updateTable(visualEntity.getEntity(), editEntityWindowController.getEntity());
+            visualEntity.setEntity(editEntityWindowController.getEntity());
+            mainWindowController.updateRelationships(visualEntity);
+        }
+
     }
 }

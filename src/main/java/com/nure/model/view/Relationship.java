@@ -38,8 +38,6 @@ public class Relationship {
         circle.centerXProperty().bind(line.startXProperty());
         circle.centerYProperty().bind(line.startYProperty());
 
-        System.out.println(circle.getCenterX());
-
         int index = getFKIndex();
         double transitionY = (index + 1) * VisualEntity.ROW_HEIGHT + VisualEntity.ROW_HEIGHT / 3;
 
@@ -67,7 +65,11 @@ public class Relationship {
     }
 
     public void delete() {
-        //todo delete relas,daopafoaoni
+        if (startVE != null && endVE != null) {
+            startVE = null;
+            endVE = null;
+            ((AnchorPane)root).getChildren().removeAll(line, circle);
+        }
     }
 
     public void draw() {

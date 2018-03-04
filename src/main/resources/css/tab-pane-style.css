@@ -41,3 +41,12 @@
     -fx-alignment: CENTER;
     -fx-text-fill: #800000;
 }
+
+.list-cell:focused {
+    -fx-background-color: white;
+}
+
+.combo-box .list-cell .label {
+    /* todo right class */
+    -fx-text-fill: white;
+}

@@ -1,5 +1,6 @@
 package com.nure.model.schema.table;
 
+import com.nure.model.schema.Schema;
 import com.nure.model.schema.exceptions.ColumnIsExistException;
 import com.nure.model.schema.exceptions.IncorrectNameException;
 import com.nure.model.schema.exceptions.SchemeException;
@@ -69,7 +70,11 @@ public class Table {
     }
 
     public void removeColumn(Column column) {
-        columns.remove(column);
+        if (columns.contains(column))
+            columns.remove(column);
+
+        if (foreignKeys.contains(column))
+            foreignKeys.remove(column);
     }
 
     public void addForeignKey(ForeignKey key) throws ColumnIsExistException {
@@ -149,5 +154,18 @@ public class Table {
         List<Column> columns = new ArrayList<>(listOfColumns());
         columns.addAll(listOfForeignKeys());
         return columns;
+    }
+
+    public Column newColumn() {
+        Column column = new Column();
+        try {
+            int id = 0;
+            do {
+                column.setName(String.format("%s%d", Schema.getProperty("names.default.column.name"), id++));
+            } while (!columns.add(column));
+        } catch (SchemeException e) {
+            throw new RuntimeException(e);
+        }
+        return column;
     }
 }

@@ -104,13 +104,13 @@ public class ForeignKey extends Column {
 
         ForeignKey that = (ForeignKey) o;
 
-        return fkName.equals(that.fkName) && super.equals(o);
+        return getName().equals(that.getName()) && super.equals(o);
     }
 
     @Override
     public int hashCode() {
         int result = super.hashCode();
-        result = 31 * result + fkName.hashCode();
+        result = 31 * result + getName().hashCode();
         result += super.hashCode();
         return result;
     }

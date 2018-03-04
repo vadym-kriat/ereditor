@@ -11,6 +11,7 @@ import javax.xml.bind.annotation.*;
 import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Stream;
 
 /**
  * Created by Vadim_ on 31.01.2018.
@@ -95,5 +96,23 @@ public class Schema {
 
     public int sizeTables() {
         return tables.size();
+    }
+
+    public void updateTable(Table oldTable, Table newTable) {
+        //todo if args null
+        if (oldTable == null || newTable == null)
+            throw new NullPointerException("Can't update table.");
+        if (tables.contains(oldTable)) {
+            try {
+                oldTable.setName(newTable.getName());
+            } catch (SchemeException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    public static String getProperty(String property) {
+        return properties.getProperty(property);
     }
 }

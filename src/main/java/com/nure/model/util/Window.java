@@ -1,10 +1,10 @@
 package com.nure.model.util;
 
 public enum Window {
-    START("EReditor",800, 500, false),
-    MAIN("EReditor",900, 500, true),
-    EDIT_ENTITY("Edit enity",520, 600, false),
-    CREATE_MODEL("New model",400, 300, false);
+    START("EReditor", 800, 500, false),
+    MAIN("EReditor", 900, 500, true),
+    EDIT_ENTITY("Edit enity", 600, 520, false),
+    CREATE_MODEL("New model", 400, 300, false);
 
     private final String name;
     private final double width;

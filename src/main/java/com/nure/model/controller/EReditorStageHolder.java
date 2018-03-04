@@ -4,6 +4,7 @@ import com.nure.model.util.Window;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -51,12 +52,14 @@ public class EReditorStageHolder {
                 break;
             case EDIT_ENTITY:
             case CREATE_MODEL:
-                modalStage.setScene(new Scene(roots.get(windowName), windowName.getWidth(), windowName.getHeight()));
-                modalStage.setResizable(windowName.isResizable());
+                if (modalStage.getScene()==null || !modalStage.getScene().getRoot().equals(roots.get(windowName))) {
+                    modalStage.setScene(new Scene(roots.get(windowName), windowName.getWidth(), windowName.getHeight()));
+                    modalStage.setResizable(windowName.isResizable());
+                    modalStage.initModality(Modality.WINDOW_MODAL);
+                    modalStage.initOwner(primaryStage);
+                }
                 modalStage.setTitle(windowName.getName());
-                modalStage.initModality(Modality.WINDOW_MODAL);
-                modalStage.initOwner(primaryStage);
-                modalStage.show();
+                modalStage.showAndWait();
                 break;
         }
     }

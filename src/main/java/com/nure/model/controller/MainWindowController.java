@@ -1,20 +1,16 @@
 package com.nure.model.controller;
 
+import com.nure.model.ProjectManager;
 import com.nure.model.schema.Schema;
 import com.nure.model.schema.exceptions.SchemeException;
 import com.nure.model.schema.table.Column;
 import com.nure.model.schema.table.ForeignKey;
 import com.nure.model.schema.table.Table;
 import com.nure.model.view.VisualEntity;
-import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Line;
-import javafx.util.Duration;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -33,54 +29,15 @@ public class MainWindowController implements Initializable {
         ControllersManager.getInstance().setController(this);
         visualEntityList = new ArrayList<>();
 
-        //test
-        /*try {
-            Table table = new Table("Table");
-            Column column = new Column();
-            column.setName("primary_key");
-            column.setPK(true);
-            table.addColumn(column);
-            Column col = new Column();
-            col.setName("not_null");
-            col.setNotNull(true);
-            table.addColumn(col);
-
-            workSpace.getChildren().add(new VisualEntity(table));
-        } catch (SchemeException e) {
-            e.printStackTrace();
-        }*/
-
         test();
 
     }
 
     private void test() {
         try {
-            Schema schema = new Schema("Schema");
-            Table table = schema.newTable();
-            table.setName("hutor");
-            Column column = new Column();
-            column.setName("primary_key");
-            column.setPK(true);
-            table.addColumn(column);
-            Column col = new Column();
-            col.setName("not_null");
-            col.setNotNull(true);
-            table.addColumn(col);
-            ForeignKey foreignKey = new ForeignKey();
-            foreignKey.setName("kura_id");
-            foreignKey.setFkName("kura_id");
-            foreignKey.setReferencedTable("kura");
-            foreignKey.setReferencedColumnName("primary_key");
-            foreignKey.setNotNull(true);
-            table.addForeignKey(foreignKey);
+            ProjectManager.getInstance().createNewSchema("Schema");
 
-            table = schema.newTable();
-            table.setName("kura");
-            column = new Column();
-            column.setName("primary_key");
-            column.setPK(true);
-            table.addColumn(column);
+            Schema schema = ProjectManager.getInstance().getSchema();
 
             drawSchema(schema);
         } catch (SchemeException e) {
@@ -89,6 +46,8 @@ public class MainWindowController implements Initializable {
     }
 
     public void drawSchema(Schema schema) {
+        visualEntityList.clear();
+        workSpace.getChildren().clear();
         Set<Table> tables = schema.getTables();
         for (Table table : tables) {
             visualEntityList.add(new VisualEntity(table));
@@ -100,7 +59,12 @@ public class MainWindowController implements Initializable {
         }
     }
 
+    public void updateRelationships(VisualEntity visualEntity) {
+        visualEntity.updateRelationships(visualEntityList);
+    }
+
     //Menu-bar methods
+
     public void newModel(ActionEvent actionEvent) {
 
     }
@@ -118,7 +82,14 @@ public class MainWindowController implements Initializable {
     }
 
     public void newEntity(ActionEvent actionEvent) {
+        VisualEntity newEntity = newVisualEntity();
+        visualEntityList.add(newEntity);
+        workSpace.getChildren().add(newEntity);
+    }
 
+    private VisualEntity newVisualEntity() {
+        Table newTable = ProjectManager.getInstance().getSchema().newTable();
+        return new VisualEntity(newTable);
     }
 
     public void createSQL(ActionEvent actionEvent) {

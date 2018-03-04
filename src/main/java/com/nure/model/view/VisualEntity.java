@@ -1,5 +1,6 @@
 package com.nure.model.view;
 
+import com.nure.model.controller.ControllersManager;
 import com.nure.model.schema.exceptions.SchemeException;
 import com.nure.model.schema.table.Column;
 import com.nure.model.schema.table.ForeignKey;
@@ -54,7 +55,7 @@ public class VisualEntity extends TitledPane {
 
         attributesListView = new ListView<>();
         attributesListView.setItems(FXCollections.observableArrayList(entity.getAllColumns()));
-        attributesListView.setCellFactory(param -> new AttributeListCell());
+        attributesListView.setCellFactory(param -> new AttributeListCell(ROW_HEIGHT));
         attributesListView.setMouseTransparent(true);
         //todo set context menu
 
@@ -86,6 +87,11 @@ public class VisualEntity extends TitledPane {
             }
         });
         setOnMouseReleased(event -> setCursor(Cursor.HAND));
+        setOnMouseClicked(event -> {
+            if (event.getClickCount() == 2) {
+                ControllersManager.getInstance().editEntity(this);
+            }
+        });
     }
 
     private void updateSize() {
@@ -104,8 +110,8 @@ public class VisualEntity extends TitledPane {
     }
 
     public void updateRelationships(List<VisualEntity> visualEntityList) {
-        for (Relationship relationship : relationshipMap.values()) {
-            relationship.delete();
+        for (VisualEntity visualEntity : visualEntityList) {
+            deleteRelationship(visualEntity);
         }
         relationshipMap.clear();
 
@@ -130,50 +136,30 @@ public class VisualEntity extends TitledPane {
     }
 
     public void deleteRelationship(VisualEntity visualEntity) {
-        relationshipMap.get(visualEntity).delete();
-        relationshipMap.remove(visualEntity);
+        if (relationshipMap.containsKey(visualEntity)) {
+            relationshipMap.get(visualEntity).delete();
+            relationshipMap.remove(visualEntity);
+            visualEntity.deleteExternalRelationship(this);
+        }
     }
 
-    static class AttributeListCell extends ListCell<Column> {
-        private HBox root;
-        private Label icon;
-        private Label attrName;
-
-        AttributeListCell() {
-            super();
-            root = new HBox();
-            root.setMaxHeight(ROW_HEIGHT);
-            root.setSpacing(10);
-
-            icon = new Label();
-            icon.setPrefSize(20, 20);
-            root.getChildren().add(icon);
-
-            attrName = new Label();
-            root.getChildren().add(attrName);
+    public void deleteExternalRelationship(VisualEntity visualEntity) {
+        if (externalRelationshipMap.containsKey(visualEntity)) {
+            externalRelationshipMap.remove(visualEntity);
         }
+    }
 
-        @Override
-        protected void updateItem(Column item, boolean empty) {
-            super.updateItem(item, empty);
-            if (empty) {
-                setText(null);
-                setGraphic(null);
-            } else {
-                setText(null);
-                attrName.setText(item.getName());
+    private void updateContent() {
+        setText(entity.getName());
+        attributesListView.getItems().clear();
+        attributesListView.getItems().addAll(entity.getAllColumns());
+    }
 
-                if (item.isPK()) {
-                    icon.getStyleClass().add("pk");
-                } else if (item instanceof ForeignKey) {
-                    icon.getStyleClass().add("fk");
-                } else {
-                    icon.getStyleClass().add(item.isNotNull() ? "not-null" : "null");
-                }
-
-                setGraphic(root);
-            }
-        }
+    public void setEntity(Table entity) {
+        this.entity = entity;
+        updateContent();
+        updateSize();
+        //todo update size
     }
 
     class Delta {double x, y;}
